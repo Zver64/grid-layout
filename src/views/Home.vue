@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <el-grid>
+      <el-grid-item>This is one of grid items</el-grid-item>
+      <el-grid-item>This is one of grid items</el-grid-item>
+      <el-grid-item>This is one of grid items</el-grid-item>
+      <el-grid-item>This is one of grid items</el-grid-item>
+    </el-grid>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import ElGrid from '@/components/el-grid'
+import ElGridItem from '@/components/el-grid-item'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    HelloWorld
+    ElGrid,
+    ElGridItem
   }
-};
+}
 </script>
