@@ -2,15 +2,15 @@
   <div
     class="el-grid-item"
     :style="{
-      'grid-row-start': 'span ' + rows,
-      'grid-column-start': 'span ' + cols
+      'grid-row-start': 'span ' + rows
     }"
     :class="
       Object.assign(
         {
           'el-grid-item_center': center
         },
-        itemClass()
+        itemClass(),
+        widthClass
       )
     "
   >
@@ -116,6 +116,12 @@ export default {
   computed: {
     wide() {
       return this.$props.cols > 1
+    },
+    widthClass() {
+      if (this.cols < 2) return {}
+      let classes = {}
+      classes[`el-grid-item_col-${this.cols}`] = true
+      return classes
     }
   }
 }
@@ -132,6 +138,33 @@ export default {
   position: relative;
   &_hidden {
     display: none;
+  }
+  &_col-2 {
+    grid-column-start: span 2;
+    @include r(530) {
+      grid-column-start: span 1;
+    }
+  }
+  &_col-3 {
+    grid-column-start: span 3;
+    @include r(830) {
+      grid-column-start: span 2;
+    }
+    @include r(530) {
+      grid-column-start: span 1;
+    }
+  }
+  &_col-4 {
+    grid-column-start: span 4;
+    @include r(1130) {
+      grid-column-start: span 3;
+    }
+    @include r(830) {
+      grid-column-start: span 2;
+    }
+    @include r(530) {
+      grid-column-start: span 1;
+    }
   }
   &__content {
     color: var(--steel-grey);
